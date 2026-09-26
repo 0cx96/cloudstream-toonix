@@ -36,6 +36,7 @@ jobs:
         uses: actions/setup-java@v5
         with:
           java-version: 17
+          distribution: 'temurin'
 
       - name: Build Plugins
         run: |
