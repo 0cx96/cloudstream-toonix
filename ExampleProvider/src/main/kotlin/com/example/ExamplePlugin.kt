@@ -7,7 +7,7 @@ package com.example
     @CloudstreamPlugin
     class ExamplePlugin: Plugin() {
         override fun load(context: Context) {
-            // Registers your newly created provider!
+            // Registers your newly created provider!!
             registerMainAPI(ToonixProvider())
         }
     }
