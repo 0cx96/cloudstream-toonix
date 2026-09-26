@@ -45,6 +45,7 @@ jobs:
           ./gradlew make makePluginsJson
           cp **/build/*.cs3 $GITHUB_WORKSPACE/builds
           cp build/plugins.json $GITHUB_WORKSPACE/builds
+          echo '{"name": "Toonix", "description": "Toonix Provider", "manifestVersion": 1, "pluginLists": ["https://raw.githubusercontent.com/0cx96/cloudstream-toonix/builds/plugins.json"]}' > $GITHUB_WORKSPACE/builds/repo.json
 
       - name: Push builds
         run: |
