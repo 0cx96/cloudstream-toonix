@@ -1,8 +1,7 @@
-package com.example
+ package com.example
     
     import com.lagradost.cloudstream3.*
     import com.lagradost.cloudstream3.utils.ExtractorLink
-    import com.lagradost.cloudstream3.utils.ExtractorLinkType
     import com.lagradost.cloudstream3.utils.Qualities
     
     class ToonixProvider : MainAPI() {
@@ -66,34 +65,33 @@ package com.example
                 this.posterUrl = poster
                 this.plot = description
             }
-	}
+        }
 
         // 3. Extract the Video Stream Link
-	override suspend fun loadLinks(
-	   data: String,
+        override suspend fun loadLinks(
+            data: String,
             isCasting: Boolean,
             subtitleCallback: (SubtitleFile) -> Unit,
             callback: (ExtractorLink) -> Unit
-	): Boolean {
-	   val html = app.get(data).text
+        ): Boolean {
+            val html = app.get(data).text
             
             val m3u8Regex = Regex("""(https://v2\.hlsfastnet\.workers\.dev/[^"'\s\\]+)""")
             val match = m3u8Regex.find(html)
 
             if (match != null) {
                 val m3u8Url = match.groupValues[1]
-		callback.invoke(
-		   ExtractorLink(
-                        source = this.name,
-    			name = this.name,
-    			url = m3u8Url,
-    			referer = mainUrl,
-    			quality = Qualities.Unknown.value,
-    			type = ExtractorLinkType.M3U8
-    			)
-		)
+                callback.invoke(
+                    ExtractorLink(
+    			this.name,
+    			this.name,
+    			m3u8Url,
+    			mainUrl,
+    			Qualities.Unknown.value
+                    )
+                )
                 return true
             }
             return false
-	}
+        }
     }
