@@ -1,8 +1,10 @@
- package com.example
+package com.example
     
     import com.lagradost.cloudstream3.*
     import com.lagradost.cloudstream3.utils.ExtractorLink
+    import com.lagradost.cloudstream3.utils.ExtractorLinkType
     import com.lagradost.cloudstream3.utils.Qualities
+    import com.lagradost.cloudstream3.utils.newExtractorLink
     
     class ToonixProvider : MainAPI() {
         override var mainUrl = "https://toonix.bond"
@@ -82,13 +84,15 @@
             if (match != null) {
                 val m3u8Url = match.groupValues[1]
                 callback.invoke(
-                    ExtractorLink(
-    			this.name,
-    			this.name,
-    			m3u8Url,
-    			mainUrl,
-    			Qualities.Unknown.value
-                    )
+                    newExtractorLink(
+    			source = this.name,
+    			name = this.name,
+    			url = m3u8Url,
+    			type = ExtractorLinkType.M3U8
+                    ) {
+    			this.referer = mainUrl
+    			this.quality = Qualities.Unknown.value
+                    }
                 )
                 return true
             }
