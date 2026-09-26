@@ -1,0 +1,23 @@
+[
+    {
+        "iconUrl": "https://upload.wikimedia.org/wikipedia/commons/2/2f/Korduene_Logo.png",
+        "fileHash": "sha256-5b7cd7704cf266f70a8ab69a6036876c77205def54a60488c5f807d823864aed",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/0cx96/cloudstream-toonix",
+        "fileSize": 15029,
+        "status": 1,
+        "language": "en",
+        "authors": [
+            "Cloudburst",
+            "Luna712"
+        ],
+        "tvTypes": [
+            "Movie"
+        ],
+        "version": 1,
+        "internalName": "ExampleProvider",
+        "description": "Lorem ipsum",
+        "url": "https://raw.githubusercontent.com/0cx96/cloudstream-toonix/builds/ExampleProvider.cs3",
+        "name": "ExampleProvider"
+    }
+]
